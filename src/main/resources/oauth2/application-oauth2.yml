@@ -47,7 +47,7 @@ spring:
 #app
 app:
   auth:
-    token-secret:
+    token-secret: 065AC75741559UCB88F87E5EF897A0FB182ZE2D040AA4CDE06FC6B32D2F859F4
     access-token-expiration-msec: 3600000
     refresh-token-expiration-msec: 1209600000
   cors:
