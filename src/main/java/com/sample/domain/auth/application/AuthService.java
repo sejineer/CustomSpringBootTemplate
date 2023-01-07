@@ -16,6 +16,7 @@ import com.sample.global.payload.Message;
 import com.sample.domain.auth.domain.repository.TokenRepository;
 import com.sample.domain.user.domain.repository.UserRepository;
 
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,7 +28,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.RequiredArgsConstructor;
 
-import javax.validation.Valid;
+
 
 @RequiredArgsConstructor
 @Service

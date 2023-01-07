@@ -1,11 +1,10 @@
 package com.sample.domain.auth.domain.repository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.sample.global.config.security.util.CustomCookie;
 import com.nimbusds.oauth2.sdk.util.StringUtils;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.oauth2.client.web.AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.stereotype.Repository;
@@ -40,7 +39,7 @@ public class CustomAuthorizationRequestRepository implements AuthorizationReques
     }
 
     @Override
-    public OAuth2AuthorizationRequest removeAuthorizationRequest(HttpServletRequest request) {
+    public OAuth2AuthorizationRequest removeAuthorizationRequest(HttpServletRequest request, HttpServletResponse response) {
         return this.loadAuthorizationRequest(request);
     }
 
@@ -48,5 +47,5 @@ public class CustomAuthorizationRequestRepository implements AuthorizationReques
         CustomCookie.deleteCookie(request, response, OAUTH2_AUTHORIZATION_REQUEST_COOKIE_NAME);
         CustomCookie.deleteCookie(request, response, REDIRECT_URI_PARAM_COOKIE_NAME);
     }
-    
+
 }

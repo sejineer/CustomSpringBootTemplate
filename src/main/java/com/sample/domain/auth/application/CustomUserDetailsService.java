@@ -2,13 +2,12 @@ package com.sample.domain.auth.application;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import com.sample.global.DefaultAssert;
 import com.sample.global.config.security.token.UserPrincipal;
 import com.sample.domain.user.domain.User;
 import com.sample.domain.user.domain.repository.UserRepository;
 
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

@@ -1,7 +1,7 @@
 package com.sample.domain.auth.presentation;
 
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import com.sample.domain.auth.dto.*;
 import com.sample.global.payload.ErrorResponse;

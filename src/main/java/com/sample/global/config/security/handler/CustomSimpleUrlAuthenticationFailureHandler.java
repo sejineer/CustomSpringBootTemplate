@@ -11,10 +11,10 @@ import static com.sample.domain.auth.domain.repository.CustomAuthorizationReques
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.sample.global.config.security.util.CustomCookie;
 import com.sample.domain.auth.domain.repository.CustomAuthorizationRequestRepository;

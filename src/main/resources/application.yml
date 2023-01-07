@@ -12,6 +12,9 @@ spring:
   output:
     ansi:
       enabled: always
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 # 오류 처리
 server:
