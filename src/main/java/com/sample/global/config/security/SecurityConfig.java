@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,7 +20,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -53,14 +51,6 @@ public class SecurityConfig {
     public CustomOncePerRequestFilter customOncePerRequestFilter() {
         return new CustomOncePerRequestFilter();
     }
-
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsService (AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-//        authenticationManagerBuilder
-//                .userDetailsService(customUserDetailsService)
-//                .passwordEncoder(passwordEncoder());
-//        return new InMemoryUserDetailsManager();
-//    }
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -124,48 +114,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-//    protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .cors()
-//                    .and()
-//                .sessionManagement()
-//                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                    .and()
-//                .csrf()
-//                    .disable()
-//                .formLogin()
-//                    .disable()
-//                .httpBasic()
-//                    .disable()
-//                .exceptionHandling()
-//                    .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-//                    .and()
-//                .authorizeRequests()
-//                    .antMatchers("/", "/error","/favicon.ico", "/**/*.png", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.html", "/**/*.css", "/**/*.js")
-//                        .permitAll()
-//                    .antMatchers("/swagger", "/swagger-ui.html", "/swagger-ui/**", "/api-docs", "/api-docs/**", "/v3/api-docs/**")
-//                        .permitAll()
-//                    .antMatchers("/login/**","/auth/**", "/oauth2/**")
-//                        .permitAll()
-//                    .antMatchers("/blog/**")
-//                        .permitAll()
-//                    .anyRequest()
-//                        .authenticated()
-//                    .and()
-//                .oauth2Login()
-//                    .authorizationEndpoint()
-//                        .baseUri("/oauth2/authorize")
-//                        .authorizationRequestRepository(customAuthorizationRequestRepository)
-//                        .and()
-//                    .redirectionEndpoint()
-//                        .baseUri("/oauth2/callback/*")
-//                        .and()
-//                    .userInfoEndpoint()
-//                        .userService(customOAuth2UserService)
-//                        .and()
-//                    .successHandler(oAuth2AuthenticationSuccessHandler)
-//                    .failureHandler(oAuth2AuthenticationFailureHandler);
-//
-//        http.addFilterBefore(customOncePerRequestFilter(), UsernamePasswordAuthenticationFilter.class);
-//    }
 }
