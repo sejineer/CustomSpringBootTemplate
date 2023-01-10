@@ -55,9 +55,11 @@ public class User extends BaseEntity {
     @Builder
     public User(String name, String email, String password, Role role, Provider provider, String providerId, String imageUrl){
         this.email = email;
-        this.password = password;
         this.name = name;
+        this.imageUrl = imageUrl;
+        this.password = password;
         this.provider = provider;
+        this.providerId = providerId;
         this.role = role;
     }
 

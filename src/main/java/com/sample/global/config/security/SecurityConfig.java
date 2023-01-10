@@ -62,7 +62,7 @@ public class SecurityConfig {
         return authenticationProvider;
     }
 
-    @Bean(BeanIds.AUTHENTICATION_MANAGER)
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
