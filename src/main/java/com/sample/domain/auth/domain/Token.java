@@ -33,4 +33,5 @@ public class Token extends BaseEntity {
         this.userEmail = userEmail;
         this.refreshToken = refreshToken;
     }
+
 }

@@ -13,24 +13,24 @@ import jakarta.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sample.domain.common.BaseEntity;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.Builder;
 import lombok.Getter;
 
-@DynamicUpdate
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
 public class User extends BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String name;
 
     @Email
-    @Column(nullable = false)
     private String email;
 
     private String imageUrl;
@@ -38,10 +38,8 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Boolean emailVerified = false;
 
-    @JsonIgnore
     private String password;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Provider provider;
 
@@ -49,18 +47,18 @@ public class User extends BaseEntity {
     private Role role;
 
     private String providerId;
-    
-    public User(){}
 
     @Builder
-    public User(String name, String email, String password, Role role, Provider provider, String providerId, String imageUrl){
-        this.email = email;
+    public User(Long id, String name, String email, String imageUrl, Boolean emailVerified, String password, Provider provider, Role role, String providerId) {
+        this.id = id;
         this.name = name;
+        this.email = email;
         this.imageUrl = imageUrl;
+        this.emailVerified = emailVerified;
         this.password = password;
         this.provider = provider;
-        this.providerId = providerId;
         this.role = role;
+        this.providerId = providerId;
     }
 
     public void updateName(String name){

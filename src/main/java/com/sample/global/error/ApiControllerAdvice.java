@@ -125,4 +125,5 @@ public class ApiControllerAdvice {
         ApiResponse apiResponse = ApiResponse.builder().check(false).information(response).build();
         return new ResponseEntity<>(apiResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
 }

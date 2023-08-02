@@ -65,4 +65,5 @@ public class DefaultAssert extends Assert{
             throw new DefaultAuthenticationException(ErrorCode.INVALID_AUTHENTICATION);
         }
     }
+
 }

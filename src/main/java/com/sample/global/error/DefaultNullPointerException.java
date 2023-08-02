@@ -13,4 +13,5 @@ public class DefaultNullPointerException extends NullPointerException{
         super(errorCode.getMessage());
         this.errorCode = errorCode;
     }
+
 }

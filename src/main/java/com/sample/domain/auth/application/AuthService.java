@@ -50,35 +50,6 @@ public class AuthService {
         return ResponseEntity.ok(apiResponse);
     }
 
-    public ResponseEntity<?> delete(UserPrincipal userPrincipal){
-        Optional<User> user = userRepository.findById(userPrincipal.getId());
-        DefaultAssert.isTrue(user.isPresent(), "유저가 올바르지 않습니다.");
-
-        Optional<Token> token = tokenRepository.findByUserEmail(user.get().getEmail());
-        DefaultAssert.isTrue(token.isPresent(), "토큰이 유효하지 않습니다.");
-
-        userRepository.delete(user.get());
-        tokenRepository.delete(token.get());
-
-        ApiResponse apiResponse = ApiResponse.builder().check(true).information(Message.builder().message("회원 탈퇴하셨습니다.").build()).build();
-
-        return ResponseEntity.ok(apiResponse);
-    }
-
-    public ResponseEntity<?> modify(UserPrincipal userPrincipal, @Valid ChangePasswordReq passwordChangeRequest){
-        Optional<User> user = userRepository.findById(userPrincipal.getId());
-        boolean passwordCheck = passwordEncoder.matches(passwordChangeRequest.getOldPassword(),user.get().getPassword());
-        DefaultAssert.isTrue(passwordCheck, "잘못된 비밀번호 입니다.");
-
-        boolean newPasswordCheck = passwordChangeRequest.getNewPassword().equals(passwordChangeRequest.getReNewPassword());
-        DefaultAssert.isTrue(newPasswordCheck, "신규 등록 비밀번호 값이 일치하지 않습니다.");
-
-
-        passwordEncoder.encode(passwordChangeRequest.getNewPassword());
-
-        return ResponseEntity.ok(true);
-    }
-
     public ResponseEntity<?> signin(SignInReq signInRequest){
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(
@@ -176,6 +147,5 @@ public class AuthService {
 
         return true;
     }
-
 
 }
